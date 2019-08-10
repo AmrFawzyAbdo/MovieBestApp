@@ -22,6 +22,8 @@
 		ED086B8E22FF3A2700016124 /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B8C22FF3A2700016124 /* TopRatedCell.swift */; };
 		ED086B8F22FF3A2700016124 /* TopRatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED086B8D22FF3A2700016124 /* TopRatedCell.xib */; };
 		ED086B9222FF3A4800016124 /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B9122FF3A4700016124 /* UIImage+Extentions.swift */; };
+		EDABC4E622FF43FD0008B19C /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABC4E522FF43FD0008B19C /* MovieDetail.swift */; };
+		EDABC4E822FF440C0008B19C /* MovieDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABC4E722FF440C0008B19C /* MovieDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		ED086B8C22FF3A2700016124 /* TopRatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
 		ED086B8D22FF3A2700016124 /* TopRatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopRatedCell.xib; sourceTree = "<group>"; };
 		ED086B9122FF3A4700016124 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
+		EDABC4E522FF43FD0008B19C /* MovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		EDABC4E722FF440C0008B19C /* MovieDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 			children = (
 				ED086B5B22FF31AF00016124 /* LoginVC.swift */,
 				ED086B8722FF391600016124 /* TopRatedVC.swift */,
+				EDABC4E722FF440C0008B19C /* MovieDetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				ED086B7A22FF331E00016124 /* Login.swift */,
 				ED086B7E22FF331E00016124 /* Token.swift */,
 				ED086B8922FF398C00016124 /* TopRated.swift */,
+				EDABC4E522FF43FD0008B19C /* MovieDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			files = (
 				ED086B8622FF331E00016124 /* Token.swift in Sources */,
 				ED086B8822FF391600016124 /* TopRatedVC.swift in Sources */,
+				EDABC4E822FF440C0008B19C /* MovieDetailsVC.swift in Sources */,
 				ED086B5C22FF31AF00016124 /* LoginVC.swift in Sources */,
 				ED086B7F22FF331E00016124 /* URLs.swift in Sources */,
 				ED086B9222FF3A4800016124 /* UIImage+Extentions.swift in Sources */,
@@ -312,6 +319,7 @@
 				ED086B8222FF331E00016124 /* Login.swift in Sources */,
 				ED086B8022FF331E00016124 /* HTTPClient.swift in Sources */,
 				ED086B5A22FF31AF00016124 /* AppDelegate.swift in Sources */,
+				EDABC4E622FF43FD0008B19C /* MovieDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

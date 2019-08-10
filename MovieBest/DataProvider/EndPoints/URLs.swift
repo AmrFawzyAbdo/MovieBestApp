@@ -24,6 +24,9 @@ struct URLs {
     
     static let ImageURL = URLs.baseImageURL
     
+    static let movieDetails = URLs.baseURL + "movie/"
+    
+    static let movieDetailsSec = "?api_key=" + URLs.API_KEY + "&language=en-US"
 
     
 }

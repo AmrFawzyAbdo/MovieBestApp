@@ -60,5 +60,17 @@ class HTTPClient {
     }
     
     
+    func movieDetails(using url: URL, Success: @escaping (_ object: MovieDetail)-> Void, Error: @escaping (_ error: String)-> Void){
+        Alamofire.request(url).responseJSON { response in
+            do{
+                let JSON = try JSONDecoder().decode(MovieDetail.self, from: response.data!)
+                Success(JSON)
+            }catch{
+                Error(error.localizedDescription)
+            }
+        }
+    }
+    
+    
 }
 

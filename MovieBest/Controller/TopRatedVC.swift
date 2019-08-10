@@ -95,6 +95,14 @@ extension TopRatedVC : UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as! MovieDetailsVC
+        vc.movieID = results![indexPath.row].id
+        vc.movieTitle = results![indexPath.row].title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension TopRatedVC: UICollectionViewDelegateFlowLayout {
