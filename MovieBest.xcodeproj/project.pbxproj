@@ -17,6 +17,11 @@
 		ED086B8022FF331E00016124 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B7722FF331E00016124 /* HTTPClient.swift */; };
 		ED086B8222FF331E00016124 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B7A22FF331E00016124 /* Login.swift */; };
 		ED086B8622FF331E00016124 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B7E22FF331E00016124 /* Token.swift */; };
+		ED086B8822FF391600016124 /* TopRatedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B8722FF391600016124 /* TopRatedVC.swift */; };
+		ED086B8A22FF398C00016124 /* TopRated.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B8922FF398C00016124 /* TopRated.swift */; };
+		ED086B8E22FF3A2700016124 /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B8C22FF3A2700016124 /* TopRatedCell.swift */; };
+		ED086B8F22FF3A2700016124 /* TopRatedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED086B8D22FF3A2700016124 /* TopRatedCell.xib */; };
+		ED086B9222FF3A4800016124 /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B9122FF3A4700016124 /* UIImage+Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		ED086B7722FF331E00016124 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		ED086B7A22FF331E00016124 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		ED086B7E22FF331E00016124 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		ED086B8722FF391600016124 /* TopRatedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRatedVC.swift; sourceTree = "<group>"; };
+		ED086B8922FF398C00016124 /* TopRated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRated.swift; sourceTree = "<group>"; };
+		ED086B8C22FF3A2700016124 /* TopRatedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
+		ED086B8D22FF3A2700016124 /* TopRatedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopRatedCell.xib; sourceTree = "<group>"; };
+		ED086B9122FF3A4700016124 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				ED086B5922FF31AF00016124 /* AppDelegate.swift */,
+				ED086B9022FF3A4700016124 /* Extentions */,
 				ED086B7322FF331E00016124 /* DataProvider */,
+				ED086B8B22FF3A1500016124 /* View */,
 				ED086B7222FF32FA00016124 /* Controller */,
 				ED086B6B22FF321A00016124 /* StoryBoard */,
 				ED086B6022FF31B100016124 /* Assets.xcassets */,
@@ -100,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				ED086B5B22FF31AF00016124 /* LoginVC.swift */,
+				ED086B8722FF391600016124 /* TopRatedVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -135,8 +148,26 @@
 			children = (
 				ED086B7A22FF331E00016124 /* Login.swift */,
 				ED086B7E22FF331E00016124 /* Token.swift */,
+				ED086B8922FF398C00016124 /* TopRated.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ED086B8B22FF3A1500016124 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED086B8C22FF3A2700016124 /* TopRatedCell.swift */,
+				ED086B8D22FF3A2700016124 /* TopRatedCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED086B9022FF3A4700016124 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				ED086B9122FF3A4700016124 /* UIImage+Extentions.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 		FCEF6240FE9E126AC22C9277 /* Pods */ = {
@@ -145,7 +176,6 @@
 				12EAF486253B1626D3D981FB /* Pods-MovieBest.debug.xcconfig */,
 				B9FA9025F8B166B20602E426 /* Pods-MovieBest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED086B8F22FF3A2700016124 /* TopRatedCell.xib in Resources */,
 				ED086B7122FF321A00016124 /* Main.storyboard in Resources */,
 				ED086B6122FF31B100016124 /* Assets.xcassets in Resources */,
 				ED086B7022FF321A00016124 /* LaunchScreen.storyboard in Resources */,
@@ -250,12 +281,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MovieBest/Pods-MovieBest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -270,8 +303,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED086B8622FF331E00016124 /* Token.swift in Sources */,
+				ED086B8822FF391600016124 /* TopRatedVC.swift in Sources */,
 				ED086B5C22FF31AF00016124 /* LoginVC.swift in Sources */,
 				ED086B7F22FF331E00016124 /* URLs.swift in Sources */,
+				ED086B9222FF3A4800016124 /* UIImage+Extentions.swift in Sources */,
+				ED086B8E22FF3A2700016124 /* TopRatedCell.swift in Sources */,
+				ED086B8A22FF398C00016124 /* TopRated.swift in Sources */,
 				ED086B8222FF331E00016124 /* Login.swift in Sources */,
 				ED086B8022FF331E00016124 /* HTTPClient.swift in Sources */,
 				ED086B5A22FF31AF00016124 /* AppDelegate.swift in Sources */,

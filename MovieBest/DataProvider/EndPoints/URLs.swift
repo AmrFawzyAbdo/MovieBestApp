@@ -20,4 +20,10 @@ struct URLs {
     
     static let loginURL = URLs.baseURL + "authentication/token/validate_with_login?api_key=" + URLs.API_KEY
     
+    static let topRated = URLs.baseURL + "movie/top_rated?api_key=" + URLs.API_KEY + "&language=en-US&page="
+    
+    static let ImageURL = URLs.baseImageURL
+    
+
+    
 }

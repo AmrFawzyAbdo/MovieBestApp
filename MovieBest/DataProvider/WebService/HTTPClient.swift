@@ -42,5 +42,23 @@ class HTTPClient {
     }
     
     
+    func topRated(_ page: Int = 1, Success: @escaping (_ object: TopRated, _ totalPages: Int)-> Void, Error: @escaping (_ error: String)-> Void){
+        let url = URL(string: URLs.topRated + String(page))
+        
+        Alamofire.request(url!).responseJSON { response in
+            do{
+                let JSON = try JSONDecoder().decode(TopRated.self, from: response.data!)
+                var totalPages = Int()
+                if let total = JSON.total_pages{
+                    totalPages = total
+                }
+                Success(JSON, totalPages)
+            }catch{
+                Error(error.localizedDescription)
+            }
+        }
+    }
+    
+    
 }
 
