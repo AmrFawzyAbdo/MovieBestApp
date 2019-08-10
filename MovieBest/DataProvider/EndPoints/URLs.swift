@@ -27,6 +27,12 @@ struct URLs {
     static let movieDetails = URLs.baseURL + "movie/"
     
     static let movieDetailsSec = "?api_key=" + URLs.API_KEY + "&language=en-US"
+    
+    static let sessionURL = URLs.baseURL + "authentication/session/new?api_key=" + URLs.API_KEY
+    
+    static let profileURL = URLs.baseURL + "account?api_key=" + URLs.API_KEY + "&session_id="
+    
+    static let profileImageURL = "https://secure.gravatar.com/avatar/"
 
     
 }

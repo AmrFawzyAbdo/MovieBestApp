@@ -72,5 +72,33 @@ class HTTPClient {
     }
     
     
+    func createSession(using url: URL,_ parametars: [String:Any],_ header:[String:String], Success: @escaping (_ object: Session)-> Void, Error: @escaping (_ error: String)-> Void){
+        
+        Alamofire.request(url, method: .post, parameters: parametars, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+            
+            do{
+                let JSON = try JSONDecoder().decode(Session.self, from: response.data!)
+                Success(JSON)
+            }catch{
+                Error(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    func getProfileDetails(using url: URL, Success: @escaping (_ object: Profile)-> Void, Error: @escaping (_ error: String)-> Void){
+        
+        Alamofire.request(url).responseJSON { response in
+            
+            do{
+                let JSON = try JSONDecoder().decode(Profile.self, from: response.data!)
+                Success(JSON)
+            }catch{
+                Error(error.localizedDescription)
+            }
+        }
+    }
+    
+    
 }
 

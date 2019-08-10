@@ -63,6 +63,7 @@ class LoginVC: UIViewController {
         
         connection.login(using: url!, parameters as [String : Any], headers, Success: { success in
             if let _ = success.success{
+                self.setSessionID()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "TabBar")
                 self.present(vc, animated: true, completion: nil)
@@ -79,6 +80,18 @@ class LoginVC: UIViewController {
             print(error)
         }
         
+    }
+    
+    func setSessionID(){
+        let headers = ["content-type": "application/json"]
+        let parameters = ["request_token": UserDefaults.standard.object(forKey: "Token")]
+        
+        connection.createSession(using: URL(string: URLs.sessionURL)!, parameters as [String : Any], headers, Success: { (object) in
+            print("sessionID \(object.session_id)")
+            UserDefaults.standard.set(object.session_id, forKey: "SessionID")
+        }) { error in
+            print(error)
+        }
     }
     
     

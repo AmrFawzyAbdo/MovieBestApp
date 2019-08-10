@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class TopRatedVC: UIViewController {
-
+    
     //Outlets
     @IBOutlet weak var topRatedCollection: UICollectionView!
     //Var
@@ -20,7 +20,7 @@ class TopRatedVC: UIViewController {
         let ref = UIRefreshControl()
         ref.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         return ref
-}()
+    }()
     private var connection: HTTPClient!
     private var isloading = false
     private var currentPage = 1
@@ -39,23 +39,23 @@ class TopRatedVC: UIViewController {
     
     @objc private func handleRefresh(){
         
-    DispatchQueue.main.async {
-    self.refresher.endRefreshing()
-    }
-    self.connection = HTTPClient()
-    guard !isloading else {return}
-    isloading = true
-    connection.topRated(Success: { object, totalPages in
-        self.results = object.results
-        self.isloading = false
-        self.topRatedCollection.reloadData()
-        self.currentPage = 1
-        self.lastPage = totalPages
+        DispatchQueue.main.async {
+            self.refresher.endRefreshing()
+        }
+        self.connection = HTTPClient()
+        guard !isloading else {return}
+        isloading = true
+        connection.topRated(Success: { object, totalPages in
+            self.results = object.results
+            self.isloading = false
+            self.topRatedCollection.reloadData()
+            self.currentPage = 1
+            self.lastPage = totalPages
             
         }) { error in
             print(error)
+        }
     }
-}
     
     fileprivate func loadMore(){
         
@@ -75,8 +75,8 @@ class TopRatedVC: UIViewController {
             print(error)
         }
     }
-
-
+    
+    
 }
 
 
