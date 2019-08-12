@@ -13,6 +13,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var loginOL: UIButton!
+    @IBOutlet weak var sampleImageView: UIImageView!
     
     //Vars
     var connection: HTTPClient!
@@ -23,7 +24,57 @@ class LoginVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.loginOL.isEnabled = false
         self.generateToken()
+        
+
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "12.jpg")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+//
+//        UIGraphicsBeginImageContext(self.view.frame.size)
+//        UIImage(named: "11.jpg")?.draw(in: self.view.bounds)
+//
+//        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+//            UIGraphicsEndImageContext()
+//            self.view.backgroundColor = UIColor(patternImage: image)
+//        }else{
+//            UIGraphicsEndImageContext()
+//            debugPrint("Image not available")
+//        }
+        
+        
+//        blurEffect()
+
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "123.jpeg")!)
+        
+
     }
+    
+    
+    
+    
+//    func blurEffect() {
+//
+//        let context = CIContext(options: nil)
+//
+//        let currentFilter = CIFilter(name: "CIGaussianBlur")
+//        let beginImage = CIImage(image: sampleImageView.image!)
+//        currentFilter!.setValue(beginImage, forKey: kCIInputImageKey)
+//        currentFilter!.setValue(5, forKey: kCIInputRadiusKey)
+//
+//        let cropFilter = CIFilter(name: "CICrop")
+//        cropFilter!.setValue(currentFilter!.outputImage, forKey: kCIInputImageKey)
+//        cropFilter!.setValue(CIVector(cgRect: beginImage!.extent), forKey: "inputRectangle")
+//
+//        let output = cropFilter!.outputImage
+//        let cgimg = context.createCGImage(output!, from: output!.extent)
+//        let processedImage = UIImage(cgImage: cgimg!)
+//        sampleImageView.image = processedImage
+//
+//        self.view.backgroundColor = UIColor(patternImage: processedImage)
+//
+//    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +103,9 @@ class LoginVC: UIViewController {
         guard let username = usernameTF.text else {return}
         guard let password = passwordTF.text else {return}
         
+        
+        if Connectivity.isConnectedToInternet{
+        
         let url = URL(string: URLs.loginURL)
         let headers = ["content-type": "application/json"]
         let parameters = [
@@ -61,24 +115,34 @@ class LoginVC: UIViewController {
         ]
         
         
-        connection.login(using: url!, parameters as [String : Any], headers, Success: { success in
-            if let _ = success.success{
-                self.setSessionID()
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "TabBar")
-                self.present(vc, animated: true, completion: nil)
-            }else{
-                print("Can't login")
-                let alert = UIAlertController(title: "Error", message: "Invalid username OR password", preferredStyle: .alert)
-                let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
+            connection.login(using: url!, parameters as [String : Any], headers, Success: { success in
+                if let _ = success.success{
+                    self.setSessionID()
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "TabBar")
+                    self.present(vc, animated: true, completion: nil)
+                }else{
+                    print("Can't login")
+                    let alert = UIAlertController(title: "Error", message: "Invalid username OR password", preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
+                    }
+                    alert.addAction(cancel)
+                    self.present(alert, animated: true, completion: nil)
                 }
-                alert.addAction(cancel)
-                self.present(alert, animated: true, completion: nil)
-            }
-            
-        }) { error in
+                
+            })
+            { error in
             print(error)
         }
+        }else{
+            print("5araa")
+            let alert = UIAlertController(title: "Error", message: "Check your internet connection", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
+            }
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        }
+            
         
     }
     
@@ -87,7 +151,7 @@ class LoginVC: UIViewController {
         let parameters = ["request_token": UserDefaults.standard.object(forKey: "Token")]
         
         connection.createSession(using: URL(string: URLs.sessionURL)!, parameters as [String : Any], headers, Success: { (object) in
-            print("sessionID \(object.session_id)")
+            print("sessionID \(object.session_id ?? "")")
             UserDefaults.standard.set(object.session_id, forKey: "SessionID")
         }) { error in
             print(error)

@@ -35,10 +35,22 @@ class TopRatedVC: UIViewController {
             self.handleRefresh()
         }
         topRatedCollection.addSubview(refresher)
+        
+        
+        // Clear CollectionView background
+        self.topRatedCollection.backgroundColor = UIColor.clear
+        self.topRatedCollection.backgroundView = View.init(frame: CGRect.zero)
+        
+        //Set view background
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "21.jpg")!)
+
+
+        
     }
     
     @objc private func handleRefresh(){
         
+        if Connectivity.isConnectedToInternet{
         DispatchQueue.main.async {
             self.refresher.endRefreshing()
         }
@@ -55,10 +67,18 @@ class TopRatedVC: UIViewController {
         }) { error in
             print(error)
         }
+        }else{
+            let alert = UIAlertController(title: "Error", message: "Can't", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
+            }
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     fileprivate func loadMore(){
         
+        if Connectivity.isConnectedToInternet{
         guard !isloading else {return}
         guard currentPage < lastPage else {return}
         isloading = true
@@ -73,6 +93,10 @@ class TopRatedVC: UIViewController {
             
         }) { error in
             print(error)
+        }
+    }else{
+
+            showAlert(backgroundColor: .red, textColor: .white, message: "Can't load more , check your connection")
         }
     }
     
@@ -121,3 +145,51 @@ extension TopRatedVC: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
+
+extension UIViewController {
+    
+    func showAlert(backgroundColor:UIColor, textColor:UIColor, message:String)
+    {
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let label = UILabel(frame: CGRect.zero)
+        label.textAlignment = NSTextAlignment.center
+        label.text = message
+        label.font = UIFont(name: "", size: 15)
+        label.adjustsFontSizeToFitWidth = true
+        
+        label.backgroundColor =  backgroundColor //UIColor.whiteColor()
+        label.textColor = textColor //TEXT COLOR
+        
+        label.sizeToFit()
+        label.numberOfLines = 4
+        label.layer.shadowColor = UIColor.gray.cgColor
+        label.layer.shadowOffset = CGSize(width: 4, height: 3)
+        label.layer.shadowOpacity = 0.3
+        label.frame = CGRect(x: appDelegate.window!.frame.size.width, y: 64, width: appDelegate.window!.frame.size.width, height: 44)
+        
+        label.alpha = 1
+        
+        appDelegate.window!.addSubview(label)
+        
+        var basketTopFrame: CGRect = label.frame;
+        basketTopFrame.origin.x = 0;
+        
+        UIView.animate(withDuration
+            :2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIView.AnimationOptions.curveEaseOut, animations: { () -> Void in
+                label.frame = basketTopFrame
+        },  completion: {
+            (value: Bool) in
+            UIView.animate(withDuration:2.0, delay: 2.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIView.AnimationOptions.curveEaseIn, animations: { () -> Void in
+                label.alpha = 0
+            },  completion: {
+                (value: Bool) in
+                label.removeFromSuperview()
+            })
+        })
+    }
+    
+    
+}
+
