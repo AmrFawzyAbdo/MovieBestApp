@@ -135,7 +135,7 @@ class LoginVC: UIViewController {
             print(error)
         }
         }else{
-            print("5araa")
+            print("error")
             let alert = UIAlertController(title: "Error", message: "Check your internet connection", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
             }

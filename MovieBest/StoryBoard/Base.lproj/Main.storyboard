@@ -149,11 +149,11 @@
             </objects>
             <point key="canvasLocation" x="805.60000000000002" y="42.728635682158924"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Top Rated-->
         <scene sceneID="IEC-ga-jeY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mXz-U6-Aj8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="arrow-big-03.png" id="ddO-vB-j7V"/>
+                    <tabBarItem key="tabBarItem" title="Top Rated" image="star-7" springLoaded="YES" id="ddO-vB-j7V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QmK-6M-ZEk">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -172,7 +172,7 @@
         <scene sceneID="xhb-fR-TQj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EVz-MI-P0X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" id="2w5-44-rYk"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="man-7" id="2w5-44-rYk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zBk-xM-G1x">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -249,42 +249,48 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvu-0L-ysa">
-                                <rect key="frame" x="16" y="378" width="343" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUN-2R-bwg">
-                                <rect key="frame" x="16" y="303" width="52" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUN-2R-bwg">
+                                <rect key="frame" x="16" y="303" width="37.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SE-4d-p7S">
-                                <rect key="frame" x="307" y="303" width="38" height="18"/>
+                                <rect key="frame" x="307.5" y="303" width="37.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NxN-w0-NV8">
+                                <rect key="frame" x="16" y="388" width="343" height="259"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mac-LM-cAg">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="259"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zUN-2R-bwg" firstAttribute="top" secondItem="LIv-RR-df5" secondAttribute="bottom" constant="54" id="0pj-nO-ov7"/>
-                            <constraint firstItem="Jvu-0L-ysa" firstAttribute="leading" secondItem="RfN-PK-mj3" secondAttribute="leading" constant="16" id="1cU-hP-1Ww"/>
                             <constraint firstItem="ils-3y-WYX" firstAttribute="trailing" secondItem="RfN-PK-mj3" secondAttribute="trailing" id="7zE-7H-YCJ"/>
                             <constraint firstItem="64a-cX-06R" firstAttribute="top" secondItem="7SE-4d-p7S" secondAttribute="bottom" constant="25" id="CeW-uI-3mw"/>
                             <constraint firstItem="LIv-RR-df5" firstAttribute="leading" secondItem="RfN-PK-mj3" secondAttribute="leading" id="Enk-DO-tAt"/>
                             <constraint firstItem="LIv-RR-df5" firstAttribute="top" secondItem="RfN-PK-mj3" secondAttribute="top" id="JI4-J7-N9x"/>
+                            <constraint firstItem="NxN-w0-NV8" firstAttribute="leading" secondItem="RfN-PK-mj3" secondAttribute="leading" constant="16" id="Ltd-jS-WiX"/>
                             <constraint firstItem="ils-3y-WYX" firstAttribute="top" secondItem="RfN-PK-mj3" secondAttribute="top" id="QxZ-8L-Hgg"/>
                             <constraint firstItem="7Lt-EO-BJO" firstAttribute="top" secondItem="zUN-2R-bwg" secondAttribute="bottom" constant="25" id="Vpo-g1-J2k"/>
+                            <constraint firstItem="RfN-PK-mj3" firstAttribute="bottom" secondItem="NxN-w0-NV8" secondAttribute="bottom" constant="20" id="Wda-Ak-MpH"/>
                             <constraint firstItem="RfN-PK-mj3" firstAttribute="trailing" secondItem="64a-cX-06R" secondAttribute="trailing" constant="17.5" id="XAf-R4-W2P"/>
                             <constraint firstItem="7SE-4d-p7S" firstAttribute="top" secondItem="LIv-RR-df5" secondAttribute="bottom" constant="54" id="ZB3-YY-fZh"/>
+                            <constraint firstItem="RfN-PK-mj3" firstAttribute="trailing" secondItem="NxN-w0-NV8" secondAttribute="trailing" constant="16" id="Zya-Bq-AbV"/>
                             <constraint firstItem="7Lt-EO-BJO" firstAttribute="leading" secondItem="RfN-PK-mj3" secondAttribute="leading" constant="17.5" id="cQd-hL-uuV"/>
-                            <constraint firstItem="RfN-PK-mj3" firstAttribute="trailing" secondItem="Jvu-0L-ysa" secondAttribute="trailing" constant="16" id="gWn-HV-Rpd"/>
                             <constraint firstItem="ils-3y-WYX" firstAttribute="leading" secondItem="RfN-PK-mj3" secondAttribute="leading" id="h14-7q-Kfj"/>
+                            <constraint firstItem="NxN-w0-NV8" firstAttribute="top" secondItem="7Lt-EO-BJO" secondAttribute="bottom" constant="20" id="hoS-nx-0rY"/>
                             <constraint firstItem="RfN-PK-mj3" firstAttribute="trailing" secondItem="7SE-4d-p7S" secondAttribute="trailing" constant="30" id="i1Z-yy-i2K"/>
-                            <constraint firstItem="Jvu-0L-ysa" firstAttribute="top" secondItem="7Lt-EO-BJO" secondAttribute="bottom" constant="10" id="iEZ-zf-cbJ"/>
                             <constraint firstItem="64a-cX-06R" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Lt-EO-BJO" secondAttribute="trailing" constant="8" symbolic="YES" id="jJK-xp-shd"/>
                             <constraint firstItem="LIv-RR-df5" firstAttribute="trailing" secondItem="RfN-PK-mj3" secondAttribute="trailing" id="kPV-Sk-x8i"/>
                             <constraint firstItem="zUN-2R-bwg" firstAttribute="leading" secondItem="RfN-PK-mj3" secondAttribute="leading" constant="16" id="pzw-ab-P4t"/>
@@ -297,9 +303,9 @@
                         <outlet property="backImage" destination="LIv-RR-df5" id="rkp-aW-qpz"/>
                         <outlet property="dateLbl" destination="64a-cX-06R" id="UCB-XA-mV8"/>
                         <outlet property="frontImage" destination="4Ep-Fj-keg" id="vIJ-es-oXW"/>
-                        <outlet property="overViewLbl" destination="Jvu-0L-ysa" id="zxx-RZ-2qd"/>
                         <outlet property="rateLbl" destination="7SE-4d-p7S" id="ZOw-Ar-PhK"/>
                         <outlet property="releaseLbl" destination="zUN-2R-bwg" id="UH4-en-8Cn"/>
+                        <outlet property="txtView" destination="mac-LM-cAg" id="0Nu-Ec-Sbc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWy-mn-aVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,6 +378,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow-big-03.png" width="30" height="30"/>
+        <image name="man-7" width="29" height="30"/>
+        <image name="star-7" width="30" height="30"/>
     </resources>
 </document>

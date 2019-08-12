@@ -68,7 +68,7 @@ class TopRatedVC: UIViewController {
             print(error)
         }
         }else{
-            let alert = UIAlertController(title: "Error", message: "Can't", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "Can't fetich images , check your internet connection", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
             }
             alert.addAction(cancel)
@@ -120,11 +120,16 @@ extension TopRatedVC : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if Connectivity.isConnectedToInternet{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as! MovieDetailsVC
         vc.movieID = results![indexPath.row].id
         vc.movieTitle = results![indexPath.row].title
         self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            showAlert(backgroundColor: .darkGray, textColor: .white, message: "Check , your internet connection")
+        }
     }
     
 }
