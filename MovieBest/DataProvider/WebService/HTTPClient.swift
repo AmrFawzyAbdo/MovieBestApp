@@ -12,6 +12,7 @@ import Alamofire
 
 class HTTPClient {
     
+    // Generate Token
     func generateToken(using url: URL, Success: @escaping (_ object: Token)-> Void, Error: @escaping (_ error: String)-> Void){
         
         Alamofire.request(url).responseJSON { response in
@@ -25,6 +26,7 @@ class HTTPClient {
     }
     
     
+    // Login function
     func login(using url: URL,_ parametars: [String:Any],_ header: [String:String], Success: @escaping (_ success: Login)-> Void, Error: @escaping (_ error: String)-> Void){
         
         Alamofire.request(url, method: .post, parameters: parametars, encoding: JSONEncoding.default, headers: header).responseJSON { response in
@@ -42,15 +44,19 @@ class HTTPClient {
     }
     
     
+    var results:[Results]? = []
+    // Top rated movies function
     func topRated(_ page: Int = 1, Success: @escaping (_ object: TopRated, _ totalPages: Int)-> Void, Error: @escaping (_ error: String)-> Void){
         let url = URL(string: URLs.topRated + String(page))
         
         Alamofire.request(url!).responseJSON { response in
+            
             do{
                 let JSON = try JSONDecoder().decode(TopRated.self, from: response.data!)
                 var totalPages = Int()
                 if let total = JSON.total_pages{
                     totalPages = total
+                    UserDefaults.standard.set(response.data!, forKey: "Go")
                 }
                 Success(JSON, totalPages)
             }catch{
@@ -60,6 +66,7 @@ class HTTPClient {
     }
     
     
+    // Details of each selected movie function
     func movieDetails(using url: URL, Success: @escaping (_ object: MovieDetail)-> Void, Error: @escaping (_ error: String)-> Void){
         Alamofire.request(url).responseJSON { response in
             do{
@@ -72,6 +79,7 @@ class HTTPClient {
     }
     
     
+    // Session creation
     func createSession(using url: URL,_ parametars: [String:Any],_ header:[String:String], Success: @escaping (_ object: Session)-> Void, Error: @escaping (_ error: String)-> Void){
         
         Alamofire.request(url, method: .post, parameters: parametars, encoding: JSONEncoding.default, headers: header).responseJSON { response in
@@ -86,6 +94,7 @@ class HTTPClient {
     }
     
     
+    // Getting profile details
     func getProfileDetails(using url: URL, Success: @escaping (_ object: Profile)-> Void, Error: @escaping (_ error: String)-> Void){
         
         Alamofire.request(url).responseJSON { response in

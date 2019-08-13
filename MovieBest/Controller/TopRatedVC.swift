@@ -21,10 +21,15 @@ class TopRatedVC: UIViewController {
         ref.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         return ref
     }()
+    
     private var connection: HTTPClient!
     private var isloading = false
     private var currentPage = 1
     private var lastPage = 1
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,31 +48,39 @@ class TopRatedVC: UIViewController {
         
         //Set view background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "21.jpg")!)
-
-
-        
     }
+
     
+    // Handling refresh
     @objc private func handleRefresh(){
-        
         if Connectivity.isConnectedToInternet{
-        DispatchQueue.main.async {
-            self.refresher.endRefreshing()
-        }
-        self.connection = HTTPClient()
-        guard !isloading else {return}
-        isloading = true
-        connection.topRated(Success: { object, totalPages in
-            self.results = object.results
-            self.isloading = false
-            self.topRatedCollection.reloadData()
-            self.currentPage = 1
-            self.lastPage = totalPages
-            
-        }) { error in
-            print(error)
-        }
+            DispatchQueue.main.async {
+                self.refresher.endRefreshing()
+            }
+            self.connection = HTTPClient()
+            guard !isloading else {return}
+            isloading = true
+            connection.topRated(Success: { object, totalPages in
+                self.results = object.results
+                self.isloading = false
+                self.topRatedCollection.reloadData()
+                self.currentPage = 1
+                self.lastPage = totalPages
+
+//                UserDefaults.standard.setValue(self.results, forKey: "Go")
+
+            }) { error in
+                
+            }
         }else{
+            
+            if let data = UserDefaults.standard.object(forKey: "Go") as? Data{
+                let JSON = try? JSONDecoder().decode(TopRated.self, from: data)
+                self.results = JSON!.results
+            }
+            self.topRatedCollection.reloadData()
+            
+            // Alert message
             let alert = UIAlertController(title: "Error", message: "Can't fetich images , check your internet connection", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "Ok", style: .cancel) { (UIAlertAction) in
             }
@@ -76,32 +89,32 @@ class TopRatedVC: UIViewController {
         }
     }
     
+    
+    // Loading more cells , Pageing
     fileprivate func loadMore(){
-        
         if Connectivity.isConnectedToInternet{
-        guard !isloading else {return}
-        guard currentPage < lastPage else {return}
-        isloading = true
-        connection.topRated(currentPage + 1, Success: { (object, totalPages) in
-            for data in object.results!{
-                self.results?.append(data)
+            guard !isloading else {return}
+            guard currentPage < lastPage else {return}
+            isloading = true
+            connection.topRated(currentPage + 1, Success: { (object, totalPages) in
+                for data in object.results!{
+                    self.results?.append(data)
+                }
+                self.isloading = false
+                self.topRatedCollection.reloadData()
+                self.currentPage += 1
+                self.lastPage = totalPages
+            }) { error in
+                print(error)
             }
-            self.isloading = false
-            self.topRatedCollection.reloadData()
-            self.currentPage += 1
-            self.lastPage = totalPages
-            
-        }) { error in
-            print(error)
-        }
-    }else{
-
+        }else{
+            // Toast Alert
             showAlert(backgroundColor: .red, textColor: .white, message: "Can't load more , check your connection")
         }
     }
-    
-    
 }
+
+
 
 
 extension TopRatedVC : UICollectionViewDataSource {
@@ -122,11 +135,11 @@ extension TopRatedVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if Connectivity.isConnectedToInternet{
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as! MovieDetailsVC
-        vc.movieID = results![indexPath.row].id
-        vc.movieTitle = results![indexPath.row].title
-        self.navigationController?.pushViewController(vc, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsVC") as! MovieDetailsVC
+            vc.movieID = results![indexPath.row].id
+            vc.movieTitle = results![indexPath.row].title
+            self.navigationController?.pushViewController(vc, animated: true)
         }else{
             showAlert(backgroundColor: .darkGray, textColor: .white, message: "Check , your internet connection")
         }
@@ -194,7 +207,5 @@ extension UIViewController {
             })
         })
     }
-    
-    
 }
 

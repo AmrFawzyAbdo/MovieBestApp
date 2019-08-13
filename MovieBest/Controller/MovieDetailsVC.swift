@@ -10,6 +10,7 @@ import UIKit
 
 class MovieDetailsVC: UIViewController {
     
+    //Outlets
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var frontImage: UIImageView!
     @IBOutlet weak var releaseLbl: UILabel!
@@ -27,20 +28,16 @@ class MovieDetailsVC: UIViewController {
         // Do any additional setup after loading the view.
         getDetails()
         
-        
-        //Set view background
-        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "211.jpg")!)
-        
+        //Setting background image
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "211.jpg")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
-        
     }
     
     
+    // Getting details
     private func getDetails(){
-        
         let connection = HTTPClient()
         connection.movieDetails(using: URL(string: URLs.movieDetails + String(movieID) + URLs.movieDetailsSec)!, Success: { object in
             self.setData(object)
@@ -48,6 +45,8 @@ class MovieDetailsVC: UIViewController {
             print(error)
         }
     }
+    
+    
     
     private func setData(_ object: MovieDetail){
         self.dateLbl.text = "Date : \(object.release_date ?? "")"
@@ -59,14 +58,4 @@ class MovieDetailsVC: UIViewController {
         self.frontImage.setImage(from: URL(string: URLs.ImageURL + object.poster_path!)!, "placeholder", .flipFromTop(0.5))
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

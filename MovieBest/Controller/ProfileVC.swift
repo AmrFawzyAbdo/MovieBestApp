@@ -9,7 +9,8 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-
+    
+    //Outlets
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var usernameLbl: UILabel!
@@ -18,10 +19,10 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getProfileDetails()
-//        createSession()
-        // Do any additional setup after loading the view.
     }
     
+    
+    //Getting profile details
     private func getProfileDetails(/*object: Session*/){
         let connection = HTTPClient()
         let sessionID = UserDefaults.standard.object(forKey: "SessionID") as! String
@@ -48,15 +49,12 @@ class ProfileVC: UIViewController {
                 self.image.image = UIImage(data: imageData as! Data)
             }
             print(error)
-
         }
     }
     
     
-    
+    //Logout button
     @IBAction func logoutBtn(_ sender: Any) {
-        
-        
         UserDefaults.standard.removeObject(forKey: "Token")
         UserDefaults.standard.removeObject(forKey: "SessionID")
         UserDefaults.standard.removeObject(forKey: "Username")
@@ -67,6 +65,4 @@ class ProfileVC: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         self.present(vc, animated: true, completion: nil)
     }
-
-
 }

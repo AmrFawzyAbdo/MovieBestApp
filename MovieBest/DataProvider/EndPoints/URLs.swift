@@ -33,6 +33,5 @@ struct URLs {
     static let profileURL = URLs.baseURL + "account?api_key=" + URLs.API_KEY + "&session_id="
     
     static let profileImageURL = "https://secure.gravatar.com/avatar/"
-
     
 }

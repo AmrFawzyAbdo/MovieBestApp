@@ -9,7 +9,7 @@
 import UIKit
 
 class TopRatedCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
