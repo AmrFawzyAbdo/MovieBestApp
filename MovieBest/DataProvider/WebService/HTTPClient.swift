@@ -26,6 +26,7 @@ class HTTPClient {
     }
     
     
+    var results:[Results]? = []
     // Login function
     func login(using url: URL,_ parametars: [String:Any],_ header: [String:String], Success: @escaping (_ success: Login)-> Void, Error: @escaping (_ error: String)-> Void){
         
@@ -44,7 +45,6 @@ class HTTPClient {
     }
     
     
-    var results:[Results]? = []
     // Top rated movies function
     func topRated(_ page: Int = 1, Success: @escaping (_ object: TopRated, _ totalPages: Int)-> Void, Error: @escaping (_ error: String)-> Void){
         let url = URL(string: URLs.topRated + String(page))

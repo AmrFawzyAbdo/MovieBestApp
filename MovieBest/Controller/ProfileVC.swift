@@ -18,12 +18,29 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getProfileDetails()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if let _ = UserDefaults.standard.object(forKey: "Name") as? String {
+            if let _ = UserDefaults.standard.object(forKey: "Username"){
+                self.nameLbl.text = UserDefaults.standard.object(forKey: "Name") as? String
+                self.usernameLbl.text = "@\(UserDefaults.standard.object(forKey: "Username") as! String)"
+                let imageData = UserDefaults.standard.object(forKey: "Image")
+                self.image.image = UIImage(data: imageData as! Data)
+            }
+            
+        }else{
+            getProfileDetails()
+        }
+        
     }
     
     
     //Getting profile details
-    private func getProfileDetails(/*object: Session*/){
+    private func getProfileDetails(){
         let connection = HTTPClient()
         let sessionID = UserDefaults.standard.object(forKey: "SessionID") as! String
         let url = URLs.profileURL + sessionID
@@ -41,13 +58,6 @@ class ProfileVC: UIViewController {
             })
             
         }) { error in
-            
-            if let _ = UserDefaults.standard.object(forKey: "Username"){
-                self.nameLbl.text = UserDefaults.standard.object(forKey: "Name") as? String
-                self.usernameLbl.text = "@\(UserDefaults.standard.object(forKey: "Username") as! String)"
-                let imageData = UserDefaults.standard.object(forKey: "Image")
-                self.image.image = UIImage(data: imageData as! Data)
-            }
             print(error)
         }
     }
@@ -61,8 +71,10 @@ class ProfileVC: UIViewController {
         UserDefaults.standard.removeObject(forKey: "Name")
         UserDefaults.standard.removeObject(forKey: "Image")
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        self.present(vc, animated: true, completion: nil)
+        if Connectivity.isConnectedToInternet{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            self.present(vc, animated: true, completion: nil)
+        }
     }
 }

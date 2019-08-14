@@ -29,8 +29,6 @@ class TopRatedVC: UIViewController {
     
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topRatedCollection.register(UINib(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
@@ -49,7 +47,7 @@ class TopRatedVC: UIViewController {
         //Set view background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "21.jpg")!)
     }
-
+    
     
     // Handling refresh
     @objc private func handleRefresh(){
@@ -66,9 +64,7 @@ class TopRatedVC: UIViewController {
                 self.topRatedCollection.reloadData()
                 self.currentPage = 1
                 self.lastPage = totalPages
-
-//                UserDefaults.standard.setValue(self.results, forKey: "Go")
-
+                
             }) { error in
                 
             }
@@ -144,7 +140,6 @@ extension TopRatedVC : UICollectionViewDataSource {
             showAlert(backgroundColor: .darkGray, textColor: .white, message: "Check , your internet connection")
         }
     }
-    
 }
 
 extension TopRatedVC: UICollectionViewDelegateFlowLayout {

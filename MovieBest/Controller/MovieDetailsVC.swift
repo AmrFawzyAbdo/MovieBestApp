@@ -28,11 +28,7 @@ class MovieDetailsVC: UIViewController {
         // Do any additional setup after loading the view.
         getDetails()
         
-        //Setting background image
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "211.jpg")
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        self.view.insertSubview(backgroundImage, at: 0)
+        self.view.backgroundColor = UIColor.black
     }
     
     
@@ -47,7 +43,7 @@ class MovieDetailsVC: UIViewController {
     }
     
     
-    
+    // Setting data
     private func setData(_ object: MovieDetail){
         self.dateLbl.text = "Date : \(object.release_date ?? "")"
         self.rateLbl.text = "Rate : \(String((object.vote_average!)))"
