@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E33C04B3D5FA50044A3DA0C1 /* Pods_MovieBest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4FBBC102586E975C37B9DE /* Pods_MovieBest.framework */; };
 		ED0213B52301327B0027CAE6 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0213B42301327B0027CAE6 /* Connectivity.swift */; };
+		ED03D92D23043A0C009DC3CF /* splash (1).jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED03D92C23043A0C009DC3CF /* splash (1).jpg */; };
 		ED086B5A22FF31AF00016124 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B5922FF31AF00016124 /* AppDelegate.swift */; };
 		ED086B5C22FF31AF00016124 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED086B5B22FF31AF00016124 /* LoginVC.swift */; };
 		ED086B6122FF31B100016124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED086B6022FF31B100016124 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		8A4FBBC102586E975C37B9DE /* Pods_MovieBest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieBest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9FA9025F8B166B20602E426 /* Pods-MovieBest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieBest.release.xcconfig"; path = "Target Support Files/Pods-MovieBest/Pods-MovieBest.release.xcconfig"; sourceTree = "<group>"; };
 		ED0213B42301327B0027CAE6 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		ED03D92C23043A0C009DC3CF /* splash (1).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "splash (1).jpg"; sourceTree = "<group>"; };
 		ED086B5622FF31AF00016124 /* MovieBest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED086B5922FF31AF00016124 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED086B5B22FF31AF00016124 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				ED086B7222FF32FA00016124 /* Controller */,
 				ED086B6B22FF321A00016124 /* StoryBoard */,
 				ED086B6022FF31B100016124 /* Assets.xcassets */,
+				ED03D92C23043A0C009DC3CF /* splash (1).jpg */,
 				ED086B6522FF31B100016124 /* Info.plist */,
 			);
 			path = MovieBest;
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED086B8F22FF3A2700016124 /* TopRatedCell.xib in Resources */,
+				ED03D92D23043A0C009DC3CF /* splash (1).jpg in Resources */,
 				ED086B7122FF321A00016124 /* Main.storyboard in Resources */,
 				ED086B6122FF31B100016124 /* Assets.xcassets in Resources */,
 				ED086B7022FF321A00016124 /* LaunchScreen.storyboard in Resources */,
