@@ -24,10 +24,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yt3-FC-Qc5" secondAttribute="bottom" id="A0P-xF-doh"/>
-                            <constraint firstItem="Yt3-FC-Qc5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="YQa-fr-xEk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yt3-FC-Qc5" secondAttribute="trailing" id="YpF-cN-HhJ"/>
-                            <constraint firstItem="Yt3-FC-Qc5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yv4-WX-EnX"/>
+                            <constraint firstItem="Yt3-FC-Qc5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="4gH-vs-Zer"/>
+                            <constraint firstAttribute="trailing" secondItem="Yt3-FC-Qc5" secondAttribute="trailing" id="ceI-fU-pr3"/>
+                            <constraint firstItem="Yt3-FC-Qc5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="xrT-ah-uTG"/>
+                            <constraint firstItem="Yt3-FC-Qc5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yNf-Ay-QRA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
